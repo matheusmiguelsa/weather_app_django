@@ -12,7 +12,7 @@ def get_html_content(request):
     session.headers['Accept-Language'] = LANGUAGE
     session.headers['Content-Language'] = LANGUAGE
     html_content = session.get(f'https://www.google.com/search?q=weather+{city}').text
-    html_content_image = session.get(f'https://fr.freepik.com/search?format=search&last_filter=query&last_value=a&query={city}').text
+    html_content_image = session.get(f'https://fr.freepik.com/search?format=search&last_filter=query&last_value=a&query={city}+city').text
     return [html_content, html_content_image]
 
 
@@ -40,7 +40,10 @@ def home(request):
             result['dayhour'], result['weather_now'] = soup.find("div", attrs={"class": "BNeawe tAd8D AP7Wnd"}).text.split(
                 '\n')
         except:
-            result['region'] = 'Digite uma Cidade válida'
+            result['image1'] = "https://img.freepik.com/vetores-gratis/ups-erro-404-com-ilustracao-de-conceito-de-robo-quebrado_114360-5529.jpg?w=826&t=st=1705015673~exp=1705016273~hmac=b8cac4581f8eed4ae6ec1df40efe153d4d4c05803fa91dedb9ee8ac4ae06b618"
+            result['image2'] = "https://img.freepik.com/vetores-gratis/ups-erro-404-com-ilustracao-de-conceito-de-robo-quebrado_114360-5529.jpg?w=826&t=st=1705015673~exp=1705016273~hmac=b8cac4581f8eed4ae6ec1df40efe153d4d4c05803fa91dedb9ee8ac4ae06b618"
+            result['image3'] = "https://img.freepik.com/vetores-gratis/ups-erro-404-com-ilustracao-de-conceito-de-robo-quebrado_114360-5529.jpg?w=826&t=st=1705015673~exp=1705016273~hmac=b8cac4581f8eed4ae6ec1df40efe153d4d4c05803fa91dedb9ee8ac4ae06b618"
+            result['region'] = 'Type a valid city'
             result['temp_now'] = ''
             result['dayhour'], result['weather_now'] = '', ''
     return render(request, 'core/home.html', {'result': result})
