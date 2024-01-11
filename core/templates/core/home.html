@@ -11,8 +11,8 @@
     <style>
         .carousel-inner {
             max-width: 500px !important;
-            max-width: 400px !important;
-            min-height: 400px !important;
+            max-width: 380px !important;
+            min-height: 380px !important;
             min-height: 35000px !important;
 
         }
@@ -35,7 +35,7 @@
 <body>
     <div class="d-flex align-items-center flex-column container-fluid bg-primary main">
 
-        <div class="card d-flex align-items-center flex-column secondary bg-light">
+        <div class="card d-flex align-items-center flex-column secondary bg-light mt-4">
             <div class="card-body d-flex align-items-center flex-column">
                 <h1>Find the Weather of Your City</h1>
                 {% csrf_token %}
@@ -44,12 +44,12 @@
                         <label for="city"></label>
                         <input type="text" id="city" value="{{ request.GET.city }}" placeholder="City..." name="city" />
                     </div>
-                    <input class="btn btn-primary m-4" type="submit" value="Enviar"></input>
+                    <input class="btn btn-primary m-4" type="submit" value="Submit"></input>
                 </form>
                 {% if result %}
                 <h3>{{ result.region }}</h3>
                 <h3>{{ result.dayhour }}</h3>
-                <h3>{{ result.temp_now }}</h3>
+                <h3 class="text-center">{{ result.temp_now }}</h3>
                 <h3>{{ result.weather_now }}</h3>
 
 
